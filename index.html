@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#050510">
+  <!-- Primary SEO -->
+  <title>Meniscus — Animated Navigation | mrchandrayee</title>
+  <meta name="description" content="A fluid meniscus-effect animated navigation with water-surface morphing transitions. Pure HTML, CSS & JavaScript.">
+  <meta name="author" content="mrchandrayee">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://mrchandrayee.github.io/meniscus-animated-navigation/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://mrchandrayee.github.io/meniscus-animated-navigation/">
+  <meta property="og:title" content="Meniscus — Animated Navigation | mrchandrayee">
+  <meta property="og:description" content="A fluid meniscus-effect animated navigation with water-surface morphing transitions. Pure HTML, CSS & JavaScript.">
+  <meta property="og:image" content="https://mrchandrayee.github.io/meniscus-animated-navigation/preview.png">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="https://mrchandrayee.github.io/meniscus-animated-navigation/">
+  <meta name="twitter:title" content="Meniscus — Animated Navigation | mrchandrayee">
+  <meta name="twitter:description" content="A fluid meniscus-effect animated navigation with water-surface morphing transitions. Pure HTML, CSS & JavaScript.">
+  <meta name="twitter:image" content="https://mrchandrayee.github.io/meniscus-animated-navigation/preview.png">
+  <meta name="twitter:creator" content="@mrchandrayee">
+
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Meniscus — Animated Navigation",
+    "description": "A fluid meniscus-effect animated navigation with water-surface morphing transitions. Pure HTML, CSS & JavaScript.",
+    "url": "https://mrchandrayee.github.io/meniscus-animated-navigation/",
+    "author": { "@type": "Person", "name": "mrchandrayee", "url": "https://github.com/mrchandrayee" },
+    "applicationCategory": "WebApplication",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+  }
+  </script>
+  <meta name="theme-color" content="#100b18">
+  
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="browser-bar">
+    <div class="traffic"><i></i><i></i><i></i></div>
+    <div class="brand">MENISCUS <span>—</span> <b>HTML</b> · <em>CSS</em> · <strong>JS</strong></div>
+    <div class="path">localhost / meniscus</div>
+  </div>
+
+  <main class="app" id="app">
+    <section class="hero">
+      <div class="kicker"><span class="status-dot"></span><span>MENISCUS</span></div>
+      <h1 id="page-title">Home</h1>
+      <p class="tagline" id="tagline">Everything, in one surface.</p>
+
+      <nav class="dock" id="dock" aria-label="Main navigation">
+        <div class="dock-track" id="dock-track">
+          <span class="bead" id="bead" aria-hidden="true">
+            <span class="bead-icon" id="bead-icon"></span>
+          </span>
+          <button class="tab active" type="button" data-index="0" aria-label="Home" aria-current="page">
+            <span class="icon"></span><span class="tab-label">Home</span>
+          </button>
+          <button class="tab" type="button" data-index="1" aria-label="Profile">
+            <span class="icon"></span><span class="tab-label">Profile</span>
+          </button>
+          <button class="tab" type="button" data-index="2" aria-label="Messages">
+            <span class="icon"></span><span class="tab-label">Messages</span>
+          </button>
+          <button class="tab" type="button" data-index="3" aria-label="Camera">
+            <span class="icon"></span><span class="tab-label">Camera</span>
+          </button>
+          <button class="tab" type="button" data-index="4" aria-label="Settings">
+            <span class="icon"></span><span class="tab-label">Settings</span>
+          </button>
+        </div>
+      </nav>
+      <p class="instruction">Tap a tab — or <u>drag the bead</u> along the bar.</p>
+    </section>
+
+    <section class="code-strip" aria-label="Implementation highlights">
+      <article class="code-card html-card"><h3><i></i>index.html</h3><pre><span class="muted">&lt;!-- ONE path: the notch is a</span>
+<span class="muted">     parametric socket, not a</span>
+<span class="muted">     stack of nested curves --&gt;</span>
+<span class="pink">&lt;nav</span> class="dock"<span class="pink">&gt;</span>
+  <span class="pink">&lt;span</span> class="dock__bead"<span class="pink">&gt;&lt;/span&gt;</span>
+  <span class="pink">&lt;button</span> role="tab"<span class="pink">&gt;</span>
+    Home
+  <span class="pink">&lt;/button&gt;</span>
+<span class="pink">&lt;/nav&gt;</span></pre></article>
+      <article class="code-card css-card"><h3><i></i>style.css</h3><pre><span class="muted">/* the plate is DEEPER than the</span>
+<span class="muted">   rim, so the socket has a</span>
+<span class="muted">   silhouette to cut — and the</span>
+<span class="muted">   rim draws the meniscus */</span>
+<span class="yellow">.dock__fill</span> {
+  fill: <span class="green">url(#nnPlate)</span>;
+  stroke: <span class="green">url(#nnRim)</span>;
+}
+<span class="yellow">.tab__label</span> {
+  color: <span class="green">var(--acc)</span>;
+}</pre></article>
+      <article class="code-card js-card"><h3><i></i>app.js</h3><pre><span class="muted">// the shoulder is tangent to</span>
+<span class="muted">// the top edge AND to the bowl,</span>
+<span class="muted">// so |C1C2| = s - b solve</span>
+<span class="yellow">const</span> reach = (s, rb, by) =&gt;
+  <span class="pink">Math.sqrt</span>((s+rb)**2-(s-by)**2);
+<span class="muted">// velocity leans the surface:</span>
+<span class="muted">// trailing shoulder draws out,</span>
+<span class="muted">// leading one tightens</span>
+<span class="yellow">const</span> sL = S * (1 + .06*mag + .40*q);
+<span class="yellow">const</span> sR = S * (1 + .06*mag - .40*q);</pre></article>
+    </section>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
