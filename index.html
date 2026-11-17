@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#100b18"><title>Meniscus — Animated Dock Navigation</title><link rel="stylesheet" href="style.css"></head>
+<body>
+<div class="browserbar"><div class="traffic"><i></i><i></i><i></i></div><div class="brand">MENISCUS <span>—</span> <b>HTML</b> · <strong>CSS</strong> · <em>JS</em></div><div class="url">localhost / meniscus</div></div>
+<main class="stage">
+ <div class="ambient" id="ambient"></div>
+ <section class="hero" aria-live="polite">
+  <div class="kicker"><i id="kickerDot"></i> MENISCUS</div>
+  <h1 id="pageTitle">Home</h1><p id="pageSubtitle">Everything, on one surface.</p>
+ </section>
+ <div class="dock-wrap">
+  <div class="dock" id="dock" role="tablist" aria-label="Main navigation">
+   <div class="dock-skin" id="dockSkin"><svg viewBox="0 0 100 30" preserveAspectRatio="none"><path id="skinFill" d="M0 0H100V30H0Z"/></svg></div>
+   <span class="bead" id="bead" aria-hidden="true"></span>
+   <button class="tab active" role="tab" aria-selected="true" data-tab="home" aria-label="Home"><svg viewBox="0 0 24 24"><path d="m3 10 9-7 9 7M5.5 9v11h13V9M9.5 20v-7h5v7"/></svg><span>Home</span></button>
+   <button class="tab" role="tab" aria-selected="false" data-tab="profile" aria-label="Profile"><svg viewBox="0 0 24 24"><circle cx="12" cy="7.5" r="3.5"/><path d="M4.5 21c.5-4.2 3.2-6.5 7.5-6.5s7 2.3 7.5 6.5"/></svg><span>Profile</span></button>
+   <button class="tab" role="tab" aria-selected="false" data-tab="messages" aria-label="Messages"><svg viewBox="0 0 24 24"><path d="M20.5 11.5a8.5 8.5 0 0 1-12.8 7.3L3 20l1.3-4.2A8.5 8.5 0 1 1 20.5 11.5Z"/></svg><span>Messages</span></button>
+   <button class="tab" role="tab" aria-selected="false" data-tab="camera" aria-label="Camera"><svg viewBox="0 0 24 24"><path d="M3 8.5h4l2-3h6l2 3h4v11H3z"/><circle cx="12" cy="13.5" r="3.5"/></svg><span>Camera</span></button>
+   <button class="tab" role="tab" aria-selected="false" data-tab="settings" aria-label="Settings"><svg viewBox="0 0 24 24"><path d="M4 7h16M4 17h16"/><circle cx="9" cy="7" r="2"/><circle cx="15" cy="17" r="2"/></svg><span>Settings</span></button>
+  </div>
+ </div>
+ <p class="hint">Tap a tab — or <u>drag the bead</u> along the bar.</p>
+</main>
+<section class="code-strip" aria-label="Code preview">
+ <article class="code-card html"><h3><i></i> index.html</h3><pre><span class="comment">&lt;!-- ONE path: the notch is a<br>parametric socket, not a<br>stack of overlapped curves --&gt;</span>
+<span class="tag">&lt;svg class="dock__skin"&gt;</span>
+  <span class="tag">&lt;path id="skinFill" /&gt;</span>
+<span class="tag">&lt;/svg&gt;</span>
+
+<span class="tag">&lt;span class="dock__bead"&gt;&lt;/span&gt;</span>
+
+<span class="tag">&lt;div role="tablist"&gt;</span>
+  <span class="tag">&lt;button role="tab"</span>
+    style="--acc:#9cf24a"&gt;
+  <span class="tag">&lt;/button&gt;</span></pre></article>
+ <article class="code-card css"><h3><i></i> style.css</h3><pre><span class="comment">/* the plate is DEEPER than the<br>room, so the socket has a<br>silhouette to cut — and the<br>rim draws the meniscus */</span>
+<span class="selector">.dock__fill</span> {
+  fill: <span class="value">url(#nnPlate)</span>;
+  stroke: <span class="value">url(#nnRim)</span>;
+}
+
+<span class="comment">/* one accent tone, 14.7:1 */</span>
+<span class="selector">.tab__label</span> {
+  color: <span class="value">var(--acc)</span>;
+}</pre></article>
+ <article class="code-card js"><h3><i></i> app.js</h3><pre><span class="comment">// the shoulder is tangent to<br>// the top edge AND to the bowl,<br>// so |C1C2| = s + rb — solve<br>// the socket's half-width:</span>
+<span class="keyword">const</span> reach = (s, rb, by) =&gt;
+  <span class="keyword">Math.sqrt</span>((s+rb)**2-(s-by)**2);
+
+<span class="comment">// velocity leans the surface:<br>// trailing shoulder draws out,<br>// leading one tightens</span>
+sL = S * (1 + .06*mag + .40*q);
+sR = S * (1 + .06*mag - .40*q);</pre></article>
+</section>
+<script src="app.js"></script></body></html>
